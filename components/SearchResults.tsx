@@ -33,7 +33,7 @@ export const SearchResults = () => {
   }, [searchText, fetchDrinks]);
 
   return (
-    <div className="text-white min-h-[500px] w-full">
+    <div className=" min-h-[500px] w-full">
       {results.drinks && (
         <>
           <p className="mt-4 text-xs">Found {results.drinks.length} results</p>

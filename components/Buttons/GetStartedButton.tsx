@@ -11,7 +11,7 @@ export const GetStartedButton = () => {
 
   return (
     <button
-      className="px-6 py-3 mt-6 bg-amber-600 uppercase text-white rounded-3xl text-sm"
+      className="px-6 py-3 mt-6 bg-amber-600 uppercase rounded-3xl text-sm"
       onClick={scrollToDrinkSection}
     >
       <span>Get started</span>

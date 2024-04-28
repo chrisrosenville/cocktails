@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export const SearchResultItem = ({ drink }: { drink: TDrink }) => {
   return (
-    <li key={drink.idDrink} className=" text-white flex justify-center">
+    <li key={drink.idDrink} className="flex justify-center">
       <Link
         className="relative h-[100px] w-[100px] flex flex-shrink-0"
         href={`/drink/${drink.idDrink}`}

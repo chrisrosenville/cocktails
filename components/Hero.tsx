@@ -30,7 +30,7 @@ export const Hero = () => {
               height={180}
               className="absolute bottom-[22px] left-1/2 -translate-x-1/2 z-0"
             />
-            <h2 className="font-Inter font-black text-white text-2xl my-4 z-10">
+            <h2 className="font-Inter font-black text-2xl my-4 z-10">
               <CocktailsText />
             </h2>
           </div>
