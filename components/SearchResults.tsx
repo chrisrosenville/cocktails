@@ -6,19 +6,16 @@ import { useIngredientStore } from "@/store/IngredientStore";
 import { useSearchStore } from "@/store/SearchStore";
 import { searchByName } from "@/utils/getRecipes";
 import { TDrink } from "@/types/drink";
-import Image from "next/image";
 import { SearchResultItem } from "./SearchResultItem";
 
+type Results = {
+  drinks: TDrink[] | null;
+};
+
 export const SearchResults = () => {
-  const [results, setResults] = useState<{ drinks: [] | null }>({
-    drinks: null,
-  });
+  const [results, setResults] = useState<Results>({ drinks: null });
 
   const searchText = useSearchStore((state) => state.searchName);
-  const selectedCategory = useCategoryStore((state) => state.selectedCategory);
-  const selectedIngredient = useIngredientStore(
-    (state) => state.selectedIngredient
-  );
 
   const fetchDrinks = useCallback(async () => {
     const drinks = await searchByName(searchText);
@@ -37,7 +34,7 @@ export const SearchResults = () => {
       {results.drinks && (
         <>
           <p className="mt-4 text-xs">Found {results.drinks.length} results</p>
-          <ul className="grid grid-cols-2 mt-4 grid-flow-row gap-4 w-full">
+          <ul className="grid grid-cols-1 sm:grid-cols-2 mt-4 grid-flow-row gap-4 w-full">
             {results.drinks.map((drink: TDrink) => (
               <SearchResultItem drink={drink} key={drink.idDrink} />
             ))}

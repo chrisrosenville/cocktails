@@ -1,12 +1,9 @@
 import Image from "next/image";
-
-import { CocktailsText } from "@/components/CocktailsText";
-import { MouseEventHandler } from "react";
-import { GetStartedButton } from "./Buttons/GetStartedButton";
+import { CocktailsText } from "@/components/Hero/CocktailsText";
 
 export const Hero = () => {
   return (
-    <div className="w-full h-[500px]">
+    <div className="w-full h-[460px] sm:h-[500px]">
       {/* Image wrapper */}
       <div className="relative w-full h-full">
         <Image
@@ -21,7 +18,7 @@ export const Hero = () => {
         <div className="absolute bg-neutral-950/80 w-full h-full z-10"></div>
 
         {/* Title and subtitle */}
-        <div className="absolute w-full flex flex-col justify-center items-center h-full z-30 mt-8">
+        <div className="absolute w-full flex flex-col justify-center items-center h-full z-30 mt-14 md:mt-20">
           <div className="flex items-center space-x-3 relative">
             <Image
               src={"/images/drink.png"}
@@ -34,8 +31,8 @@ export const Hero = () => {
               <CocktailsText />
             </h2>
           </div>
-          <div className="text-sm mt-2 text-neutral-200 text-center max-w-[470px]">
-            <p className="text-sm">
+          <div className="text-xs md:text-sm mt-2 text-neutral-200 text-center max-w-[350px] sm:max-w-[470px]">
+            <p>
               Discover a wide variety of delicious drink recipes, from classic
               cocktails to unique creations. Whether {"you're"} a seasoned
               mixologist or just starting out, our collection of recipes will

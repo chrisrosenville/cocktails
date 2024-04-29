@@ -41,8 +41,11 @@ export const CocktailsText = () => {
   return LETTERS.map((letter, index) => (
     <span
       key={index}
-      className="text-[100px] uppercase font-Oswald tracking-wider"
-      style={{ WebkitTextStrokeColor: letter.color, WebkitTextStrokeWidth: 4 }}
+      className="text-[64px] sm:text-[80px] md:text-[100px] uppercase font-Oswald tracking-wider"
+      style={{
+        WebkitTextStrokeColor: letter.color,
+        WebkitTextStrokeWidth: 3,
+      }}
     >
       {letter.letter}
     </span>

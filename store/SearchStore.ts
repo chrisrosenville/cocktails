@@ -1,7 +1,9 @@
 import { create } from "zustand";
 
+import { TDrink } from "@/types/drink";
+
 type SearchStore = {
-  searchResult: { drinks: [] } | null;
+  searchResult: { drinks: TDrink[] } | null;
   searchName: string;
   setSearchName: (search: string) => void;
   clearSearchName: () => void;

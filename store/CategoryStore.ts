@@ -6,7 +6,7 @@ import { getCategoryList } from "@/utils/getRecipes";
 
 type CategoryStore = {
   categoryList: TCategoryList | null;
-  fetchCategoryList: () => void;
+  fetchCategoryList: () => Promise<TCategoryList | null>;
   clearCategoryList: () => void;
 
   selectedCategory: string;
@@ -19,6 +19,7 @@ export const useCategoryStore = create<CategoryStore>((set) => ({
   fetchCategoryList: async () => {
     const categoryList = await getCategoryList();
     set({ categoryList });
+    return categoryList;
   },
   clearCategoryList: () => set({ categoryList: null }),
 

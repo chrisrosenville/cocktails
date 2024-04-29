@@ -7,7 +7,7 @@ export const SearchResultItem = ({ drink }: { drink: TDrink }) => {
   return (
     <li key={drink.idDrink} className="flex justify-center">
       <Link
-        className="relative h-[100px] w-[100px] flex flex-shrink-0"
+        className="relative h-[50px] w-[50px] sm:h-[100px] sm:w-[100px] flex flex-shrink-0"
         href={`/drink/${drink.idDrink}`}
       >
         <Image
