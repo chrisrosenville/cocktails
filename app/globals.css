@@ -21,3 +21,13 @@ body {
   position: relative;
   color: #fff;
 }
+
+main {
+  padding-top: 48px;
+}
+
+@media screen and (min-width: 768px) {
+  main {
+    padding-top: 64px;
+  }
+}

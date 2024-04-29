@@ -18,7 +18,7 @@ export const Hero = () => {
         <div className="absolute bg-neutral-950/80 w-full h-full z-10"></div>
 
         {/* Title and subtitle */}
-        <div className="absolute w-full flex flex-col justify-center items-center h-full z-30 pt-14 md:pt-36">
+        <div className="absolute w-full flex flex-col justify-center items-center h-full z-30 pt-20">
           <div className="flex items-center space-x-3 relative">
             <Image
               src={"/images/drink.png"}

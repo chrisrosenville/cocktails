@@ -13,15 +13,15 @@ type Results = {
 };
 
 export const SearchResults = () => {
-  const [results, setResults] = useState<Results>({ drinks: null });
-
   const searchText = useSearchStore((state) => state.searchName);
+  const results = useSearchStore((state) => state.searchResult);
+  const setResult = useSearchStore((state) => state.setSearchResult);
 
   const fetchDrinks = useCallback(async () => {
     const drinks = await searchByName(searchText);
-    setResults(drinks);
+    setResult(drinks);
     console.log(drinks);
-  }, [searchText]);
+  }, [searchText, setResult]);
 
   useEffect(() => {
     if (searchText.length > 2) {
@@ -30,18 +30,15 @@ export const SearchResults = () => {
   }, [searchText, fetchDrinks]);
 
   return (
-    <div className=" min-h-[500px] w-full">
-      {results.drinks && (
-        <>
-          <p className="mt-4 text-xs">Found {results.drinks.length} results</p>
-          <ul className="grid grid-cols-1 sm:grid-cols-2 mt-4 grid-flow-row gap-4 w-full">
-            {results.drinks.map((drink: TDrink) => (
-              <SearchResultItem drink={drink} key={drink.idDrink} />
-            ))}
-          </ul>
-        </>
+    <div className=" min-h-[500px] mt-4 w-full">
+      {results?.drinks && (
+        <ul className="grid grid-cols-1 sm:grid-cols-3 mt-4 grid-flow-row gap-4 w-full">
+          {results.drinks.map((drink: TDrink) => (
+            <SearchResultItem drink={drink} key={drink.idDrink} />
+          ))}
+        </ul>
       )}
-      {searchText.length > 2 && !results.drinks && (
+      {searchText.length > 2 && !results?.drinks && (
         <p className="text-sm mt-4 font-light">No results</p>
       )}
     </div>

@@ -6,7 +6,7 @@ import { getCategoryList } from "@/utils/getRecipes";
 
 type CategoryStore = {
   categoryList: TCategoryList | null;
-  fetchCategoryList: () => Promise<TCategoryList | null>;
+  fetchCategoryList: () => void;
   clearCategoryList: () => void;
 
   selectedCategory: string;

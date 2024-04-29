@@ -5,20 +5,23 @@ import Link from "next/link";
 
 export const SearchResultItem = ({ drink }: { drink: TDrink }) => {
   return (
-    <li key={drink.idDrink} className="flex justify-center">
+    <li
+      key={drink.idDrink}
+      className="flex sm:flex-col overflow-hidden rounded-lg sm:rounded-b-none bg-neutral-900 hover:bg-teal-500"
+    >
       <Link
-        className="relative h-[50px] w-[50px] sm:h-[100px] sm:w-[100px] flex flex-shrink-0"
+        className="relative h-[100px] sm:h-[240px] aspect-square flex flex-shrink-0"
         href={`/drink/${drink.idDrink}`}
       >
         <Image
           src={drink.strDrinkThumb}
           alt={drink.strDrink}
           fill
-          className="object-cover rounded-lg cursor-pointer"
-          sizes="100px 100px"
+          className="object-cover cursor-pointer"
+          sizes="300px, 300px"
         />
       </Link>
-      <div className="w-full flex flex-col px-4">
+      <div className="w-full flex flex-col p-2">
         <Link href={`/drink/${drink.idDrink}`}>
           <h3 className="text-lg font-semibold hover:underline leading-6">
             {drink.strDrink}

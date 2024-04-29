@@ -71,7 +71,19 @@ export const getCocktailById = async (id: string) => {
 
   try {
     const response = await fetch(url);
-    return (await response.json()) as TDrink;
+    return (await response.json()) as { drinks: TDrink[] };
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+};
+
+export const getRandomCocktail = async () => {
+  const url = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
+
+  try {
+    const response = await fetch(url);
+    return (await response.json()) as { drinks: TDrink[] };
   } catch (error) {
     console.error(error);
     return null;

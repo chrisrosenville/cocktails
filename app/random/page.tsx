@@ -1,20 +1,16 @@
+import { TDrink } from "@/types/drink";
+import { extractIngredients } from "@/utils/extractIngredients";
+import { getRandomCocktail } from "@/utils/getRecipes";
 import Image from "next/image";
 
-import { getCocktailById } from "@/utils/getRecipes";
-import { extractIngredients } from "@/utils/extractIngredients";
+export default async function RandomDrinkPage() {
+  const randomCocktail = await getRandomCocktail();
+  const cocktail = randomCocktail?.drinks[0];
 
-export default async function DrinkPage({
-  params,
-}: {
-  params: { id: string };
-}) {
-  const getCocktail = await getCocktailById(params.id);
-  const cocktail = getCocktail?.drinks[0];
-
-  const ingredients = extractIngredients(cocktail ? cocktail : undefined);
+  const ingredients = extractIngredients(cocktail);
 
   return (
-    <main className="min-h-svh md:min-h-screen">
+    <main>
       <div className="w-full flex relative space-x-8 h-[500px] p-8">
         <div className="relative w-[300px] h-[300px] overflow-hidden rounded-xl flex-shrink-0">
           <Image
