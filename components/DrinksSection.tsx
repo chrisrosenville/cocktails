@@ -1,6 +1,3 @@
-import { SearchBar } from "./SearchBar";
-import { SearchResults } from "./SearchResults";
-
 export const DrinksSection = () => {
   return (
     <section
