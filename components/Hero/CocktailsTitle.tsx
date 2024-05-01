@@ -37,7 +37,7 @@ const LETTERS = [
   },
 ];
 
-export const CocktailsText = () => {
+export const CocktailsTitle = () => {
   return LETTERS.map((letter, index) => (
     <span
       key={index}

@@ -1,20 +1,19 @@
 import { create } from "zustand";
 
-import { TDrink } from "@/types/drink";
-
 type SearchStore = {
-  searchResult: { drinks: TDrink[] } | null;
-  searchName: string;
-  setSearchResult: (result: { drinks: TDrink[] }) => void;
-  setSearchName: (search: string) => void;
-  clearSearchName: () => void;
+  isFocused: boolean;
+  setIsFocused: (focused: boolean) => void;
+
+  searchValue: string;
+  setSearchValue: (search: string) => void;
+  clearSearchValue: () => void;
 };
 
 export const useSearchStore = create<SearchStore>((set) => ({
-  searchResult: null,
-  searchName: "",
-  setSearchResult: (result: { drinks: TDrink[] }) =>
-    set({ searchResult: result }),
-  setSearchName: (search: string) => set({ searchName: search }),
-  clearSearchName: () => set({ searchName: "" }),
+  isFocused: false,
+  setIsFocused: (focused: boolean) => set({ isFocused: focused }),
+
+  searchValue: "",
+  setSearchValue: (search: string) => set({ searchValue: search }),
+  clearSearchValue: () => set({ searchValue: "" }),
 }));

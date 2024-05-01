@@ -5,8 +5,8 @@ import { FC, useEffect, useState } from "react";
 import { useSearchStore } from "@/store/SearchStore";
 import { useCategoryStore } from "@/store/CategoryStore";
 
-import { useOutsideClick } from "@/hooks/useOutsideClick";
 import { FilterButton } from "./Buttons/FilterButton";
+import { SearchInput } from "./Inputs/SearchInput";
 
 export const SearchBar: FC = () => {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
@@ -27,37 +27,16 @@ export const SearchBar: FC = () => {
     (state) => state.clearSelectedCategory
   );
 
-  console.log(categoryList);
-
   useEffect(() => {
     if (!categoryList) {
       getCategoryList();
     }
-  }, [
-    selectedCategory,
-    categoryList,
-    results,
-    getCategoryList,
-    setResults,
-    clearSelectedCategory,
-  ]);
+  }, [categoryList, getCategoryList]);
 
   return (
     <div className="relative w-full">
-      <div className="flex space-x-6 relative w-full px-1 justify-between items-center">
-        <div className="w-80">
-          <input
-            type="text"
-            placeholder="Search by name"
-            className="px-2 h-6 text-black text-xs font-light rounded-md w-full focus-visible:outline-0"
-            value={searchValue}
-            onChange={(e) => setSearchValue(e.target.value)}
-          />
-        </div>
-
-        {/* <p className="text-nowrap text-xs">
-        Found {results?.drinks.length} recipes
-      </p> */}
+      <div className="flex space-x-6 relative w-full justify-between items-center">
+        <SearchInput value={searchValue} setValue={setSearchValue} />
 
         <FilterButton
           textValue={selectedCategory ? selectedCategory : "Filter"}
@@ -66,10 +45,11 @@ export const SearchBar: FC = () => {
         />
       </div>
 
+      {/* Filter options */}
       <div
         className={`${
           isFilterOpen ? "h-[100px]" : "h-0"
-        } bg-white mt-4 z-50 transition-[height] ease-linear max-h-[200px] overflow-hidden rounded-lg`}
+        } bg-white mt-4 z-50 transition-[height] ease-linear max-h-[200px] overflow-hidden rounded-md`}
       >
         <ul className="grid grid-flow-row grid-cols-4 h-full w-full text-black text-xs font-light">
           {categoryList?.drinks.map((category) => (
@@ -83,24 +63,6 @@ export const SearchBar: FC = () => {
           ))}
         </ul>
       </div>
-
-      {/* Dropdowns container */}
-      {/* <div className="flex space-x-1 w-fit ">
-        <div className="border-l text-xs">
-          <CategoryDropdown
-            options={categoryStore.categoryList}
-            isOpen={isCategoryDropdownOpen}
-            setIsOpen={(status: boolean) => setIsCategoryDropdownOpen(status)}
-          />
-        </div>
-        <div className="border-l text-xs">
-          <IngredientDropdownList
-            options={ingredientStore.ingredientList}
-            isOpen={isIngredientDropdownOpen}
-            setIsOpen={(status: boolean) => setIsIngredientDropdownOpen(status)}
-          />
-        </div>
-      </div> */}
     </div>
   );
 };

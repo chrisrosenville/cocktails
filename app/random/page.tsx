@@ -1,6 +1,6 @@
 import { TDrink } from "@/types/drink";
 import { extractIngredients } from "@/utils/extractIngredients";
-import { getRandomCocktail } from "@/utils/getRecipes";
+import { getRandomCocktail } from "@/utils/fetchData";
 import Image from "next/image";
 
 export default async function RandomDrinkPage() {

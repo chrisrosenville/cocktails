@@ -31,3 +31,8 @@ main {
     padding-top: 64px;
   }
 }
+
+/* width */
+#searchResults::-webkit-scrollbar {
+  display: none;
+}

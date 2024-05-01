@@ -2,6 +2,8 @@ import { FC } from "react";
 
 import { useOutsideClick } from "@/hooks/useOutsideClick";
 
+import { AiOutlineControl } from "react-icons/ai";
+
 type FilterButtonProps = {
   textValue: string;
   isFilterOpen: boolean;
@@ -21,9 +23,10 @@ export const FilterButton: FC<FilterButtonProps> = ({
     <button
       ref={ref}
       onClick={() => setIsFilterOpen(!isFilterOpen)}
-      className="rounded-2xl font-light text-xs bg-white px-4 py-1 text-black"
+      className="rounded-2xl border-[0.5px] border-black font-light text-xs bg-white flex items-center px-4 py-1 text-black"
     >
       {textValue}
+      <AiOutlineControl className="inline ml-1 text-sm" />
     </button>
   );
 };

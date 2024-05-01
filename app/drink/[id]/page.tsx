@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { getCocktailById } from "@/utils/getRecipes";
+import { getCocktailById } from "@/utils/fetchData";
 import { extractIngredients } from "@/utils/extractIngredients";
 
 export default async function DrinkPage({

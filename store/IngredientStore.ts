@@ -1,8 +1,8 @@
 import { create } from "zustand";
 
-import { TIngredientList } from "@/types/categoryList";
+import { TIngredientList } from "@/types/ingredient";
 
-import { getIngredientList } from "@/utils/getRecipes";
+import { getIngredientList } from "@/utils/fetchData";
 
 type IngredientStore = {
   ingredientList: TIngredientList | null;

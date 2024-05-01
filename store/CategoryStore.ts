@@ -1,8 +1,8 @@
 import { create } from "zustand";
 
-import { TCategoryList } from "@/types/categoryList";
+import { TCategoryList } from "@/types/category";
 
-import { getCategoryList } from "@/utils/getRecipes";
+import { getCategoryList } from "@/utils/fetchData";
 
 type CategoryStore = {
   categoryList: TCategoryList | null;

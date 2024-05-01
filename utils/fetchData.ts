@@ -1,5 +1,7 @@
-import { TCategoryList, TIngredientList } from "@/types/categoryList";
-import { TDrink } from "@/types/drink";
+import { TCategoryList } from "@/types/category";
+import { TIngredientList } from "@/types/ingredient";
+
+import { TDrinkList, TDrink } from "@/types/drink";
 
 // get categories
 export const getCategoryList = async () => {
@@ -28,7 +30,7 @@ export const getIngredientList = async () => {
 };
 
 // filter by category
-export const filterByCategory = async (category: string) => {
+export const getRecipesByCategory = async (category: string) => {
   const url = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${category}`;
 
   try {
@@ -41,7 +43,7 @@ export const filterByCategory = async (category: string) => {
 };
 
 // search by ingredient
-export const searchByIngredient = async (ingredient: string) => {
+export const getRecipesByIngredient = async (ingredient: string) => {
   const url = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient}`;
 
   try {
@@ -54,12 +56,12 @@ export const searchByIngredient = async (ingredient: string) => {
 };
 
 // search by name
-export const searchByName = async (name: string) => {
+export const getRecipesBySearchValue = async (name: string) => {
   const url = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${name}`;
 
   try {
-    const response = await fetch(url);
-    return await response.json();
+    const response: TDrinkList = await fetch(url).then((res) => res.json());
+    return response.drinks;
   } catch (error) {
     console.error(error);
     return null;

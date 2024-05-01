@@ -1,3 +1,7 @@
+export type TDrinkList = {
+  drinks: TDrink[] | null;
+};
+
 export type TDrink = {
   dateModified: string;
   idDrink: string;
