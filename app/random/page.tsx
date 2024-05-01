@@ -1,4 +1,3 @@
-import { TDrink } from "@/types/drink";
 import { extractIngredients } from "@/utils/extractIngredients";
 import { getRandomCocktail } from "@/utils/fetchData";
 import Image from "next/image";
