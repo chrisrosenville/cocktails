@@ -13,8 +13,6 @@ export const HeroSearchAndResultsContainer = () => {
     setShowResults(false);
   });
 
-  console.log("showResults: ", showResults);
-
   const handleShowResults = (e: boolean) => {
     setShowResults(e);
   };

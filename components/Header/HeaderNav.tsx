@@ -46,6 +46,7 @@ export const HeaderNav = () => {
           <li
             key={key}
             className="cursor-pointer hover:underline underline-offset-2"
+            onClick={() => setIsMenuOpen(false)}
           >
             <Link href={route.path}>{route.name}</Link>
           </li>

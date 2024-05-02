@@ -1,4 +1,4 @@
-import { TCategoryList } from "@/types/category";
+import { TCategoryDrinkList, TCategoryList } from "@/types/category";
 import { TIngredientList } from "@/types/ingredient";
 
 import { TDrinkList, TDrink } from "@/types/drink";
@@ -8,8 +8,10 @@ export const getCategoryList = async () => {
   const url = "https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list";
 
   try {
-    const response = await fetch(url, { cache: "force-cache" });
-    return (await response.json()) as TCategoryList;
+    const response: TCategoryList = await fetch(url, {
+      cache: "force-cache",
+    }).then((res) => res.json());
+    return response.drinks;
   } catch (error) {
     console.error(error);
     return null;
@@ -34,8 +36,10 @@ export const getRecipesByCategory = async (category: string) => {
   const url = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${category}`;
 
   try {
-    const response = await fetch(url);
-    return await response.json();
+    const response: TCategoryDrinkList = await fetch(url).then((res) =>
+      res.json()
+    );
+    return response.drinks;
   } catch (error) {
     console.error(error);
     return null;
