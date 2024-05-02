@@ -4,9 +4,14 @@ import { useState } from "react";
 
 import { HeroSearchInput } from "../Inputs/HeroSearchInput";
 import { HeroSearchResultList } from "./HeroSearchResultList";
+import { useOutsideClick } from "@/hooks/useOutsideClick";
 
 export const HeroSearchAndResultsContainer = () => {
   const [showResults, setShowResults] = useState(false);
+
+  const handleOutsideClick = useOutsideClick(() => {
+    setShowResults(false);
+  });
 
   console.log("showResults: ", showResults);
 
@@ -15,7 +20,7 @@ export const HeroSearchAndResultsContainer = () => {
   };
 
   return (
-    <div className="w-full relative mt-6">
+    <div ref={handleOutsideClick} className="w-full relative mt-6">
       <HeroSearchInput setIsFocused={handleShowResults} />
       <HeroSearchResultList isOpen={showResults} />
     </div>

@@ -1,7 +1,6 @@
 "use client";
 
 import { FC, useEffect } from "react";
-import { useOutsideClick } from "@/hooks/useOutsideClick";
 
 import { useRecipeStore } from "@/store/RecipeStore";
 import { useSearchStore } from "@/store/SearchStore";
@@ -20,10 +19,6 @@ export const HeroSearchInput: FC<HeroSearchInputProps> = ({ setIsFocused }) => {
 
   const setSearchResult = useRecipeStore((state) => state.setSearchResult);
 
-  const handleOutsideClick = useOutsideClick(() => {
-    setIsFocused(false);
-  });
-
   useEffect(() => {
     const handleSearch = async () => {
       if (searchValue.length > 2) {
@@ -36,10 +31,7 @@ export const HeroSearchInput: FC<HeroSearchInputProps> = ({ setIsFocused }) => {
   }, [searchValue, setSearchResult]);
 
   return (
-    <div
-      ref={handleOutsideClick}
-      className="w-full relative bg-neutral-100 rounded-3xl z-50"
-    >
+    <div className="w-full relative bg-neutral-100 rounded-3xl z-50">
       <IoSearchOutline className="absolute text-lg top-1/2 -translate-y-1/2 left-3 text-neutral-500" />
       <input
         name="search"
