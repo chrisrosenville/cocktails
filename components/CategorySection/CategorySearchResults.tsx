@@ -7,7 +7,7 @@ import { TCategoryDrinkItem } from "@/types/category";
 import { getRecipesByCategory } from "@/utils/fetchData";
 
 export type CategorySearchResultsProps = {
-  selectedCategory: string;
+  selectedCategory: string | null;
   setResultLength: (value: number) => void;
 };
 

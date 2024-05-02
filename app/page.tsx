@@ -10,7 +10,7 @@ export default function Home() {
         <h2 className="text-2xl font-Oswald uppercase tracking-wide text-center">
           Discover new cocktails
         </h2>
-        <div className="mt-4">
+        <div className="mt-2">
           <CategorySelectAndSearchContainer />
         </div>
       </section>
