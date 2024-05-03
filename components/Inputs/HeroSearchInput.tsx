@@ -19,6 +19,16 @@ export const HeroSearchInput: FC<HeroSearchInputProps> = ({ setIsFocused }) => {
 
   const setSearchResult = useRecipeStore((state) => state.setSearchResult);
 
+  const handleOnFocus = () => {
+    setIsFocused(true);
+
+    // scroll to the element
+    const element = document.getElementById("search-drink");
+    const topPos = element?.getBoundingClientRect().top;
+    element?.scrollIntoView({ behavior: "smooth" });
+    window.scrollTo(0, window.scrollY - topPos!);
+  };
+
   useEffect(() => {
     const handleSearch = async () => {
       if (searchValue.length > 2) {
@@ -34,10 +44,12 @@ export const HeroSearchInput: FC<HeroSearchInputProps> = ({ setIsFocused }) => {
     <div className="w-full relative bg-neutral-100 rounded-3xl z-50">
       <IoSearchOutline className="absolute text-lg top-1/2 -translate-y-1/2 left-3 text-neutral-500" />
       <input
+        id="search-drink"
         name="search"
         autoComplete="on"
         type="text"
-        onFocus={() => setIsFocused(true)}
+        onFocus={() => handleOnFocus()}
+        onBlur={() => setIsFocused(false)}
         placeholder={"Search for a drink..."}
         className="pl-10 h-10 text-black text-xs placeholder-neutral-400 bg-transparent font-light rounded-md w-full focus-visible:outline-0"
         value={searchValue}

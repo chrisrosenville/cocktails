@@ -3,19 +3,15 @@
 import { useCategoryStore } from "@/store/CategoryStore";
 import { TCategoryListItem } from "@/types/category";
 import { getCategoryList } from "@/utils/fetchData";
-import { FC, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
-type CategoryListProps = {
-  selectedCategory: string | null;
-  setSelectedCategory: (value: string | null) => void;
-  resultLength: number;
-};
-
-export const CategoryList: FC<CategoryListProps> = ({ resultLength }) => {
+export const CategoryList = () => {
   const [categories, setCategories] = useState<TCategoryListItem[] | null>(
     null
   );
-
+  const setCategoryDrinkList = useCategoryStore(
+    (state) => state.setCategoryDrinksList
+  );
   const selectedCategory = useCategoryStore((state) => state.selectedCategory);
   const setSelectedCategory = useCategoryStore(
     (state) => state.setSelectedCategory
@@ -23,6 +19,11 @@ export const CategoryList: FC<CategoryListProps> = ({ resultLength }) => {
 
   const handleSelectCategory = (categoryName: string | null) => {
     setSelectedCategory(categoryName);
+  };
+
+  const handleClearCategory = () => {
+    setSelectedCategory(null);
+    setCategoryDrinkList(null);
   };
 
   async function fetchCategories() {
@@ -41,6 +42,16 @@ export const CategoryList: FC<CategoryListProps> = ({ resultLength }) => {
     <ul
       className={`flex flex-shrink max-w-[500px] mx-auto justify-center space-x-1 overflow-hidden flex-wrap transition-[max-height] duration-500 md:duration-300 ease-linear`}
     >
+      {selectedCategory && (
+        <li
+          className={`${
+            selectedCategory === null && "bg-neutral-300"
+          } text-[10px] border px-2 py-1 mt-2 rounded-xl flex justify-center items-center text-nowrap`}
+          onClick={() => handleClearCategory()}
+        >
+          <span>Clear</span>
+        </li>
+      )}
       {categories.map((category) => (
         <li
           className={`${
@@ -52,16 +63,6 @@ export const CategoryList: FC<CategoryListProps> = ({ resultLength }) => {
           <span>{category.strCategory}</span>
         </li>
       ))}
-      {selectedCategory && (
-        <li
-          className={`${
-            selectedCategory === null && "bg-neutral-300"
-          } text-[10px] border px-2 py-1 mt-2 rounded-xl flex justify-center items-center text-nowrap`}
-          onClick={() => handleSelectCategory(null)}
-        >
-          <span>Clear</span>
-        </li>
-      )}
     </ul>
   );
 };

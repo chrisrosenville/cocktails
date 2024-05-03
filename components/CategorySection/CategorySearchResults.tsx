@@ -3,30 +3,21 @@ import { FC, useCallback, useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-import { TCategoryDrinkItem } from "@/types/category";
 import { getRecipesByCategory } from "@/utils/fetchData";
+import { useCategoryStore } from "@/store/CategoryStore";
 
-export type CategorySearchResultsProps = {
-  selectedCategory: string | null;
-  setResultLength: (value: number) => void;
-};
+export const CategorySearchResults = () => {
+  const drinks = useCategoryStore((state) => state.categoryDrinksList);
+  const setDrinks = useCategoryStore((state) => state.setCategoryDrinksList);
 
-export const CategorySearchResults: FC<CategorySearchResultsProps> = ({
-  selectedCategory,
-  setResultLength,
-}) => {
-  const [drinksFromSelectedCategory, setDrinksFromSelectedCategory] = useState<
-    TCategoryDrinkItem[] | null
-  >([]);
+  const selectedCategory = useCategoryStore((state) => state.selectedCategory);
 
   const fetchDrinksFromSelectedCategory = useCallback(async () => {
     if (!selectedCategory) return;
 
     const res = await getRecipesByCategory(selectedCategory);
-    setDrinksFromSelectedCategory(res);
-
-    res && setResultLength(res.length);
-  }, [selectedCategory, setResultLength]);
+    setDrinks(res);
+  }, [selectedCategory, setDrinks]);
 
   useEffect(() => {
     fetchDrinksFromSelectedCategory();
@@ -35,7 +26,7 @@ export const CategorySearchResults: FC<CategorySearchResultsProps> = ({
   return (
     <>
       <ul className="grid grid-flow-row grid-cols-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4">
-        {drinksFromSelectedCategory?.map((drink) => (
+        {drinks?.map((drink) => (
           <li
             key={drink.idDrink}
             className="hover:bg-neutral-200 shadow overflow-hidden rounded-md"

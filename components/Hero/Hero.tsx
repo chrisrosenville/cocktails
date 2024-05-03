@@ -29,21 +29,18 @@ export const Hero = () => {
               height={180}
               className="absolute bottom-[22px] left-1/2 -translate-x-1/2 z-0"
             />
-            <h2 className="font-Inter font-black text-2xl my-4 z-10">
+            <h2 className="font-Inter font-black text-2xl mt-4 z-10">
               <CocktailsTitle />
             </h2>
           </div>
-          <div className="text-xs md:text-sm mt-2 text-neutral-200 text-center max-w-[350px] sm:max-w-[470px]">
-            <p>
-              Discover a wide variety of delicious drink recipes, from classic
-              cocktails to unique creations. Whether {"you're"} a seasoned
-              mixologist or just starting out, our collection of recipes will
-              surely satisfy your thirst for new flavors. Cheers!
-            </p>
-          </div>
+          <p className="text-xl font-Oswald tracking-normal mt-1 text-neutral-200 text-center max-w-[350px] sm:max-w-[470px]">
+            For every occasion, mood, and taste.
+          </p>
 
           {/* Search */}
-          <HeroSearchAndResultsContainer />
+          <div className="mt-6">
+            <HeroSearchAndResultsContainer />
+          </div>
         </div>
       </div>
     </div>

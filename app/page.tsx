@@ -1,18 +1,18 @@
-import { CategorySelectAndSearchContainer } from "@/components/CategorySection/CategorySelectAndSearchContainer";
+import { CategorySection } from "@/components/CategorySection/CategorySection";
 import { Hero } from "@/components/Hero/Hero";
+import { InfoSection } from "@/components/InfoSection/infoSection";
 
 export default function Home() {
   return (
     <main>
       <Hero />
 
+      <section className="pt-4 px-4 pb-8 bg-amber-600">
+        <InfoSection />
+      </section>
+
       <section className="p-4 bg-neutral-100 text-black">
-        <h2 className="text-2xl font-Oswald uppercase tracking-wide text-center">
-          Discover new cocktails
-        </h2>
-        <div className="mt-2">
-          <CategorySelectAndSearchContainer />
-        </div>
+        <CategorySection />
       </section>
     </main>
   );
