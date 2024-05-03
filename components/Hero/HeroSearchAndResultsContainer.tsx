@@ -22,6 +22,7 @@ export const HeroSearchAndResultsContainer = () => {
       ref={handleOutsideClick}
       className="w-full relative mt-6"
       onFocus={() => setShowResults(true)}
+      onClick={() => setShowResults(true)}
     >
       <HeroSearchInput setIsFocused={handleShowResults} />
       <HeroSearchResultList isOpen={showResults} />

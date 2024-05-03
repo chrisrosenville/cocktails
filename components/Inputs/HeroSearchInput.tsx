@@ -21,12 +21,6 @@ export const HeroSearchInput: FC<HeroSearchInputProps> = ({ setIsFocused }) => {
 
   const handleOnFocus = () => {
     setIsFocused(true);
-
-    // scroll to the element
-    const element = document.getElementById("search-drink");
-    const topPos = element?.getBoundingClientRect().top;
-    element?.scrollIntoView({ behavior: "smooth" });
-    window.scrollTo(0, window.scrollY - topPos!);
   };
 
   useEffect(() => {
@@ -49,6 +43,7 @@ export const HeroSearchInput: FC<HeroSearchInputProps> = ({ setIsFocused }) => {
         autoComplete="on"
         type="text"
         onFocus={() => handleOnFocus()}
+        onSelect={() => handleOnFocus()}
         onBlur={() => setIsFocused(false)}
         placeholder={"Search for a drink..."}
         className="pl-10 h-10 text-black text-xs placeholder-neutral-400 bg-transparent font-light rounded-md w-full focus-visible:outline-0"
