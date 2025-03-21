@@ -11,7 +11,7 @@ export default function Home() {
         <InfoSection />
       </section>
 
-      <section className="p-4 bg-neutral-100 text-black">
+      <section className="p-4 bg-neutral-100 text-black min-h-[calc(100svh)] md:min-h-0">
         <CategorySection />
       </section>
     </main>
