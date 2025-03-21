@@ -1,9 +1,9 @@
 "use client";
+import { useEffect, useState } from "react";
 
 import { useCategoryStore } from "@/store/CategoryStore";
 import { TCategoryListItem } from "@/types/category";
 import { getCategoryList } from "@/utils/fetchData";
-import { useEffect, useState } from "react";
 
 export const CategoryList = () => {
   const [categories, setCategories] = useState<TCategoryListItem[] | null>(
