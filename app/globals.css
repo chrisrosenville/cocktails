@@ -24,16 +24,6 @@ body {
   min-height: 100svh;
 }
 
-main {
-  padding-top: 48px;
-}
-
-@media screen and (min-width: 768px) {
-  main {
-    padding-top: 64px;
-  }
-}
-
 /* width */
 #searchResults::-webkit-scrollbar {
   display: none;

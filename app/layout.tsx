@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Dancing_Script } from "next/font/google";
 import "./globals.css";
 
 import { Header } from "@/components/Header/Header";
 import { Footer } from "@/components/Footer/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
+const dancingScript = Dancing_Script({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "DRINKLAB - 100+ drink recipes",
@@ -19,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${dancingScript.className} ${inter.className}`}>
         <div id="app">
           <Header />
           {children}

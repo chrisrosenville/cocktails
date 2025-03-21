@@ -1,12 +1,19 @@
-import { HeaderNav } from "./HeaderNav";
+import { DesktopNavigation } from "./DesktopNavigation";
+import { MobileNavigation } from "./MobileNavigation";
 
 export const Header = () => {
   return (
-    <header className="flex md:justify-between h-12 md:h-16 w-full bg-[#141414] items-center px-2 md:px-8 absolute z-50 top-0 border-b">
-      <h1 className="font-Inter font-black absolute md:relative md:top-0 md:left-0 md:-translate-x-0 md:-translate-y-0 left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 text-2xl">
+    <header className="flex md:absolute bg-neutral-900 md:bg-transparent justify-between top-0 h-16 w-full bg-transparent items-center px-2 md:px-8 z-50">
+      <h1 className="font-Inter font-black text-2xl absolute left-1/2 -translate-x-1/2 md:relative md:left-0 md:-translate-x-0">
         DRINKLAB
       </h1>
-      <HeaderNav />
+      <nav className="md:hidden">
+        <MobileNavigation />
+      </nav>
+
+      <nav className="hidden md:block">
+        <DesktopNavigation />
+      </nav>
     </header>
   );
 };

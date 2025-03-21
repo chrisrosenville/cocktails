@@ -5,41 +5,40 @@ import { HeroSearchAndResultsContainer } from "./HeroSearchAndResultsContainer";
 
 export const Hero = () => {
   return (
-    <div className="w-full relative h-[460px] sm:h-[500px]">
-      {/* Image wrapper */}
-      <div className="relative w-full h-full">
+    <div className="">
+      <div className="relative aspect-video min-h-[calc(100svh-64px)] md:min-h-[500px] w-full h-full">
         <Image
           src={"/images/bar.jpg"}
-          alt="Wall of alcohol bottles"
+          alt="Wall of alcohol bottles in a bar"
           fill
           loading="eager"
           priority
-          className="z-0 object-cover"
+          className="z-0 object-cover object-center"
         />
-        {/* Image overlay */}
-        <div className="absolute bg-neutral-950/80 w-full h-full z-10"></div>
 
-        {/* Title and subtitle */}
-        <div className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 max-w-[500px] flex flex-col pt-24 sm:pt-16 md:pt-12 z-30">
-          <div className="flex items-center space-x-3 relative">
+        <div className="absolute bg-neutral-950/80 w-full h-full z-10 flex items-center justify-center">
+          <div className="relative h-1/3">
             <Image
               src={"/images/drink.png"}
               alt="logo"
-              width={180}
-              height={180}
-              className="absolute bottom-[22px] left-1/2 -translate-x-1/2 z-0"
+              width={140}
+              height={140}
+              loading="eager"
+              style={{ zIndex: -1 }}
+              className="absolute bottom-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
             />
+
             <h2 className="font-Inter font-black text-2xl mt-4 z-10">
               <CocktailsTitle />
             </h2>
-          </div>
-          <p className="text-xl font-Oswald tracking-normal mt-1 text-neutral-200 text-center max-w-[350px] sm:max-w-[470px]">
-            For every occasion, mood, and taste.
-          </p>
 
-          {/* Search */}
-          <div className="mt-6">
-            <HeroSearchAndResultsContainer />
+            <p className="text-xl font-Dancing_Script tracking-normal mt-2 text-neutral-200 text-center max-w-[350px] sm:max-w-[470px]">
+              {"There's a drink for every occassion"}
+            </p>
+
+            <div className="mt-6">
+              <HeroSearchAndResultsContainer />
+            </div>
           </div>
         </div>
       </div>

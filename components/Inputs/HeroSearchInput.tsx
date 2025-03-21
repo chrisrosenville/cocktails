@@ -46,7 +46,7 @@ export const HeroSearchInput: FC<HeroSearchInputProps> = ({ setIsFocused }) => {
         onSelect={() => handleOnFocus()}
         onBlur={() => setIsFocused(false)}
         placeholder={"Search for a drink..."}
-        className="pl-10 h-10 text-black text-xs placeholder-neutral-400 bg-transparent font-light rounded-md w-full focus-visible:outline-0"
+        className="pl-10 h-10 text-black font-Inter text-xs placeholder-neutral-400 bg-transparent font-light rounded-md w-full focus-visible:outline-0"
         value={searchValue}
         onChange={(e) => setSearchValue(e.target.value)}
       />
