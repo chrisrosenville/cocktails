@@ -46,7 +46,7 @@ export const CategoryList = () => {
         <li
           className={`${
             selectedCategory === null && "bg-neutral-300"
-          } text-[10px] border px-2 py-1 mt-2 rounded-xl flex justify-center items-center text-nowrap`}
+          } text-sm border px-2 py-1 mt-2 rounded-xl flex justify-center items-center text-nowrap`}
           onClick={() => handleClearCategory()}
         >
           <span>Clear</span>
@@ -56,7 +56,7 @@ export const CategoryList = () => {
         <li
           className={`${
             selectedCategory === category.strCategory && "bg-neutral-300"
-          } text-[10px] border px-2 py-1 mt-2 rounded-xl flex justify-center items-center text-nowrap`}
+          } text-sm font-light border px-3 py-1 mt-2 rounded-xl flex justify-center items-center text-nowrap`}
           key={category.strCategory}
           onClick={() => handleSelectCategory(category.strCategory)}
         >

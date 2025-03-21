@@ -16,7 +16,8 @@ const config: Config = {
       fontFamily: {
         Inter: ["Inter", "sans-serif"],
         Oswald: ["Oswald", "sans-serif"],
-        Dancing_Script: ["Dancing_Script", "cursive"],
+        DancingScript: ["Dancing_Script", "cursive"],
+        OpenSans: ["Open Sans", "sans-serif"],
       },
     },
   },

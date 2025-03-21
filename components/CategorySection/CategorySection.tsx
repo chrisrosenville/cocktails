@@ -3,10 +3,10 @@ import { CategorySelectAndSearchContainer } from "./CategorySelectAndSearchConta
 export const CategorySection = () => {
   return (
     <>
-      <h2 className="text-2xl font-Oswald uppercase tracking-wide text-center">
-        Discover new cocktails
+      <h2 className="text-4xl font-OpenSans mb-3 mt-2 font-semibold uppercase tracking-wider text-center">
+        Discover
       </h2>
-      <p className="text-center text-xs font-light mt-2">
+      <p className="text-center text-sm max-w-xs mx-auto font-light">
         Select one of the categories below to see all our recipes within that
         category
       </p>
