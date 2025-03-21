@@ -25,7 +25,7 @@ export const Hero = () => {
               height={140}
               loading="eager"
               style={{ zIndex: -1 }}
-              className="absolute bottom-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+              className="absolute md:bottom-1/3 bottom-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
             />
 
             <h2 className="font-Inter font-black text-2xl mt-4 z-10">

@@ -7,7 +7,7 @@ export default function Home() {
     <main>
       <Hero />
 
-      <section className="pt-4 px-4 pb-8 bg-amber-600">
+      <section className="pt-4 text-white px-4 pb-8 bg-lime-700">
         <InfoSection />
       </section>
 
