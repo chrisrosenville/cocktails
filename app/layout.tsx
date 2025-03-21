@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Dancing_Script, Open_Sans } from "next/font/google";
 import "./globals.css";
 
+import { AppProvider } from "@/components/AppProvider";
 import { Header } from "@/components/Header/Header";
 import { Footer } from "@/components/Footer/Footer";
 
@@ -24,11 +25,11 @@ export default function RootLayout({
       <body
         className={`${dancingScript.className} ${inter.className} ${openSans.className}`}
       >
-        <div id="app">
+        <AppProvider>
           <Header />
           {children}
           <Footer />
-        </div>
+        </AppProvider>
       </body>
     </html>
   );
