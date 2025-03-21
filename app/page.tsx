@@ -1,6 +1,6 @@
 import { CategorySection } from "@/components/CategorySection/CategorySection";
 import { Hero } from "@/components/Hero/Hero";
-import { InfoSection } from "@/components/InfoSection/infoSection";
+import { InfoSection } from "@/components/InfoSection/InfoSection";
 
 export default function Home() {
   return (
