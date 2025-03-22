@@ -33,14 +33,13 @@ export const MobileNavigation = () => {
       </div>
 
       <OutsideClickContainer
-        isOpen={isMenuOpen}
+        isOpen={true}
         onClose={() => setIsMenuOpen(false)}
+        className={`${
+          isMenuOpen ? "max-h-[200px] py-6" : "max-h-0 py-0"
+        } absolute top-16 text-center transition-all overflow-hidden ease-linear md:max-h-full left-0 bg-neutral-900 z-40 w-full flex flex-col items-center uppercase tracking-wider font-OpenSans`}
       >
-        <ul
-          className={`${
-            isMenuOpen ? "max-h-[200px] py-6" : "max-h-0 py-0"
-          } absolute md:relative text-center top-full transition-all overflow-hidden ease-linear md:max-h-full left-0 bg-neutral-900 z-40 md:p-0 w-full flex flex-col md:flex-row md:space-y-0 space-y-6 md:space-x-6 items-center uppercase tracking-wide font-Oswald`}
-        >
+        <ul className="flex flex-col gap-4">
           {ROUTES.map((route, key) => (
             <li
               key={key}
