@@ -1,15 +1,15 @@
 "use client";
 
-import { useEffect } from "react";
+import { useState } from "react";
 
 import { useRecipeStore } from "@/store/RecipeStore";
-import { useSearchStore } from "@/store/SearchStore";
 
 import { getRecipesBySearchValue } from "@/utils/fetchData";
 
 import { IoSearchOutline } from "react-icons/io5";
 import { useQuery } from "@tanstack/react-query";
 import { useDebounce } from "@/hooks/useDebounce";
+import { useSearchStore } from "@/store/SearchStore";
 
 interface Props {
   isFocused: boolean;
@@ -39,14 +39,14 @@ export const SearchInput = (props: Props) => {
       <input
         id="search-drink"
         name="search"
-        autoComplete="on"
+        autoComplete="off"
         type="text"
         onBlur={() => props.setIsFocused(false)}
         onFocus={() => props.setIsFocused(true)}
         onChange={(e) => setSearchValue(e.target.value)}
         value={searchValue}
         placeholder={"Search for a drink..."}
-        className="pl-10 h-10 text-black font-Inter text-xs placeholder-neutral-400 bg-transparent font-light rounded-md w-full focus-visible:outline-0"
+        className="pl-10 h-10 text-black font-Inter text-xs placeholder-neutral-400 bg-transparent font-light rounded-md w-full"
       />
     </div>
   );

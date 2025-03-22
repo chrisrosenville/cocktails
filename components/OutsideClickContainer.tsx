@@ -14,18 +14,13 @@ export const OutsideClickContainer = ({
 }: Props) => {
   const childRef = useRef<HTMLDivElement>(null);
 
+  const handleClickOutside = (event: MouseEvent) => {
+    if (childRef.current && !childRef.current.contains(event.target as Node)) {
+      onClose(); // Call the onClose function when clicked outside
+    }
+  };
+
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      event.preventDefault();
-
-      if (
-        childRef.current &&
-        !childRef.current.contains(event.target as Node)
-      ) {
-        onClose(); // Call the onClose function when clicked outside
-      }
-    };
-
     if (isOpen) {
       document.addEventListener("mousedown", handleClickOutside);
     }
