@@ -16,6 +16,8 @@ export const OutsideClickContainer = ({
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
+      event.preventDefault();
+
       if (
         childRef.current &&
         !childRef.current.contains(event.target as Node)

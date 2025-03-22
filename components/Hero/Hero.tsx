@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 import { CocktailsTitle } from "@/components/Hero/CocktailsTitle";
-import { HeroSearchAndResultsContainer } from "./HeroSearchAndResultsContainer";
+import { Searchbar } from "../Searchbar/Searchbar";
 
 export const Hero = () => {
   return (
@@ -16,7 +16,9 @@ export const Hero = () => {
           className="z-0 object-cover object-center"
         />
 
-        <div className="absolute bg-neutral-950/80 w-full h-full z-10 flex items-center justify-center">
+        <div className="absolute inset-0 bg-neutral-950/80 w-full h-full"></div>
+
+        <div className="flex flex-col items-center justify-center h-full w-full">
           <div className="relative h-1/3">
             <Image
               src={"/images/drink.png"}
@@ -36,8 +38,8 @@ export const Hero = () => {
               {"There's a drink for every occassion"}
             </p>
 
-            <div className="mt-6">
-              <HeroSearchAndResultsContainer />
+            <div className="mt-6 z-50">
+              <Searchbar />
             </div>
           </div>
         </div>

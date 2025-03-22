@@ -1,6 +1,6 @@
 "use client";
 
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -9,26 +9,28 @@ import { useSearchStore } from "@/store/SearchStore";
 
 import { OutsideClickContainer } from "../OutsideClickContainer";
 
-type HeroSearchResultListProps = {
-  isOpen: boolean;
-  setIsOpen: () => void;
-};
+interface Props {
+  show: boolean;
+  onClose: () => void;
+}
 
-export const HeroSearchResultList: FC<HeroSearchResultListProps> = ({
-  isOpen,
-  setIsOpen,
-}) => {
+export const SearchResults = (props: Props) => {
   const searchValue = useSearchStore((state) => state.searchValue);
   const searchResult = useRecipeStore((state) => state.searchResult);
 
-  if (!isOpen || searchValue.length < 3) return null;
+  if (searchValue.length < 3) return null;
 
   return (
     <>
-      <OutsideClickContainer className="" isOpen={isOpen} onClose={setIsOpen}>
+      <OutsideClickContainer
+        className="relative"
+        isOpen={props.show}
+        onClose={props.onClose}
+      >
         <ul
           id="searchResults"
-          className="absolute w-full px-4 mt-8 pb-2 top-1/2 max-h-[350px] z-40 rounded-3xl overflow-y-scroll bg-neutral-100"
+          style={{ zIndex: 99 }}
+          className="w-full px-4 mt-2 pb-2 top-1/2 max-h-[360px] z-40 rounded-md overflow-y-scroll bg-neutral-100"
         >
           {/* No results from search */}
           {searchValue.length > 2 && !searchResult && (
@@ -41,8 +43,13 @@ export const HeroSearchResultList: FC<HeroSearchResultListProps> = ({
             <li
               className="text-neutral-900 py-4 hover:bg-neutral-200 border-b border-neutral-300 overflow-hidden"
               key={drink.idDrink}
+              onClick={() => console.log("Outside Click!")}
             >
-              <Link className="flex" href={`/drink/${drink.idDrink}`}>
+              <Link
+                className="flex"
+                href={`/drink/${drink.idDrink}`}
+                onClick={() => console.log("Click!")}
+              >
                 <div className="relative">
                   <Image
                     src={drink.strDrinkThumb}
