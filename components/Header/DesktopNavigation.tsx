@@ -1,9 +1,6 @@
 import Link from "next/link";
 
-const ROUTES = [
-  { name: "Home", path: "/" },
-  { name: "Random", path: "/random" },
-];
+import { ROUTES } from "@/lib/navRoutes";
 
 export const DesktopNavigation = () => {
   return (

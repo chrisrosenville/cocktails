@@ -35,22 +35,22 @@ export default function DrinkPage() {
   if (!data?.drinks) return null;
 
   return (
-    <main className="min-h-svh md:min-h-screen">
-      <div className="relative aspect-square w-full md:h-[50vw] max-h-[600px] overflow-hidden">
+    <main className="min-h-svh flex flex-col sm:max-w-[600px] sm:mx-auto md:pt-16">
+      <div className="relative aspect-square sm:aspect-square w-full sm:mx-auto sm:w-[600px]">
         <Image
           src={data?.drinks[0]?.strDrinkThumb ?? ""}
           alt={data?.drinks[0]?.strDrink ?? "Cocktail"}
           fill
-          sizes="300px 300px, (min-width: 640px) 600px 600px"
+          className="aspect-square"
         />
       </div>
 
-      <div className="p-4">
+      <div className="w-full p-4">
         <h1 className="text-4xl font-bold font-OpenSans mb-4">
           {data?.drinks[0]?.strDrink}
         </h1>
 
-        <span className="">Tags:</span>
+        <span className="font-bold">Tags:</span>
 
         <div className="flex flex-wrap text-sm gap-2 py-1">
           <TagContainer name={data?.drinks[0]?.strCategory} />
@@ -59,12 +59,13 @@ export default function DrinkPage() {
         </div>
 
         <div className="flex flex-col mt-4">
-          <span className="underline underline-offset-2">Ingredients</span>
-          <p>{`${ingredients}`}</p>
+          <span className="font-bold mb-1">Ingredients:</span>
+          <p className="text-sm">{`${ingredients}`}</p>
         </div>
+
         <div className="mt-4">
-          <span className="underline underline-offset-2">Instructions</span>
-          <p>{data?.drinks[0]?.strInstructions}</p>
+          <span className="font-bold mb-1">Instructions:</span>
+          <p className="text-sm">{data?.drinks[0]?.strInstructions}</p>
         </div>
       </div>
     </main>
