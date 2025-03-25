@@ -1,62 +1,59 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 
 import { useCategoryStore } from "@/store/CategoryStore";
 import { TCategoryListItem } from "@/types/category";
-import { getCategoryList } from "@/utils/fetchData";
+
+import { getCategoryList, getRecipesByCategory } from "@/utils/fetchData";
+import { useCallback, useEffect, useState } from "react";
 
 export const CategoryList = () => {
-  const [categories, setCategories] = useState<TCategoryListItem[] | null>(
-    null
-  );
-  const setCategoryDrinkList = useCategoryStore(
-    (state) => state.setCategoryDrinksList
-  );
-  const selectedCategory = useCategoryStore((state) => state.selectedCategory);
-  const setSelectedCategory = useCategoryStore(
-    (state) => state.setSelectedCategory
-  );
+  const categoryStore = useCategoryStore();
 
-  const handleSelectCategory = (categoryName: string | null) => {
-    setSelectedCategory(categoryName);
-  };
+  const getCategories = useCallback(async () => {
+    const categoryArray = await getCategoryList();
 
-  const handleClearCategory = () => {
-    setSelectedCategory(null);
-    setCategoryDrinkList(null);
-  };
+    if (!categoryArray) return null;
 
-  async function fetchCategories() {
-    const categories = await getCategoryList();
+    console.log("Getting all categories...");
+    categoryStore.setCategoryList(categoryArray);
+    categoryStore.setSelectedCategory(categoryArray[0].strCategory);
+  }, []);
 
-    setCategories(categories);
-  }
+  const getDrinksFromSelectedCategory = useCallback(async () => {
+    if (!categoryStore.selectedCategory) return;
+
+    console.log("Fetching drinks for selected category...");
+    await getRecipesByCategory(categoryStore.selectedCategory).then((res) => {
+      categoryStore.setDrinksFromSelectedCategory(res);
+    });
+  }, []);
 
   useEffect(() => {
-    !categories && fetchCategories();
-  }, [categories]);
+    getCategories();
+  }, []);
 
-  if (!categories) return null;
+  useEffect(() => {
+    getDrinksFromSelectedCategory();
+  }, [categoryStore.selectedCategory]);
+
+  const handleSelectCategory = (categoryName: string | null) => {
+    categoryStore.setSelectedCategory(categoryName);
+    console.log("Selecting new category:", categoryName);
+  };
+
+  if (!categoryStore.categoryList) return null;
 
   return (
     <ul
-      className={`flex flex-shrink max-w-[500px] mx-auto justify-center space-x-1 overflow-hidden flex-wrap transition-[max-height] duration-500 md:duration-300 ease-linear`}
+      className={`flex flex-shrink max-w-[600px] mx-auto justify-center gap-2 overflow-hidden py-1 flex-wrap transition-[max-height] duration-500 md:duration-300 ease-linear`}
     >
-      {selectedCategory && (
+      {categoryStore.categoryList.map((category: TCategoryListItem) => (
         <li
           className={`${
-            selectedCategory === null && "bg-neutral-300"
-          } text-sm border px-2 py-1 mt-2 rounded-xl flex justify-center items-center text-nowrap`}
-          onClick={() => handleClearCategory()}
-        >
-          <span>Clear</span>
-        </li>
-      )}
-      {categories.map((category) => (
-        <li
-          className={`${
-            selectedCategory === category.strCategory && "bg-neutral-300"
-          } text-sm font-light border px-3 py-1 mt-2 rounded-xl flex justify-center items-center text-nowrap`}
+            categoryStore.selectedCategory === category.strCategory &&
+            "font-bold bg-neutral-300 border-lime-700"
+          } text-sm font-light cursor-pointer px-3 py-1 border-2 border-neutral-50 bg-neutral-50 rounded-xl flex justify-center items-center text-nowrap`}
           key={category.strCategory}
           onClick={() => handleSelectCategory(category.strCategory)}
         >

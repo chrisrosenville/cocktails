@@ -36,9 +36,9 @@ export const getRecipesByCategory = async (category: string) => {
   const url = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${category}`;
 
   try {
-    const response: TCategoryDrinkList = await fetch(url).then((res) =>
-      res.json()
-    );
+    const response: TCategoryDrinkList = await fetch(url, {
+      cache: "force-cache",
+    }).then((res) => res.json());
     return response.drinks;
   } catch (error) {
     console.error(error);
@@ -51,7 +51,7 @@ export const getRecipesByIngredient = async (ingredient: string) => {
   const url = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient}`;
 
   try {
-    const response = await fetch(url);
+    const response = await fetch(url, { cache: "force-cache" });
     return await response.json();
   } catch (error) {
     console.error(error);
@@ -64,7 +64,9 @@ export const getRecipesBySearchValue = async (name: string) => {
   const url = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${name}`;
 
   try {
-    const response: TDrinkList = await fetch(url).then((res) => res.json());
+    const response: TDrinkList = await fetch(url, {
+      cache: "force-cache",
+    }).then((res) => res.json());
     return response.drinks;
   } catch (error) {
     console.error(error);
@@ -76,7 +78,7 @@ export const getCocktailById = async (id: string) => {
   const url = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`;
 
   try {
-    const response = await fetch(url);
+    const response = await fetch(url, { cache: "force-cache" });
     return (await response.json()) as { drinks: TDrink[] };
   } catch (error) {
     console.error(error);

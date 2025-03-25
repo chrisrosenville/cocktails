@@ -7,11 +7,11 @@ export default function Home() {
     <main>
       <Hero />
 
-      <section className="pt-4 text-white px-4 pb-8 bg-lime-700">
+      <section className=" text-white bg-lime-700 ">
         <InfoSection />
       </section>
 
-      <section className="p-4 bg-neutral-100 text-black min-h-[calc(100svh)] md:min-h-0">
+      <section className="p-4 bg-[#EDEAE0] text-black min-h-[calc(100svh)] md:min-h-0 ">
         <CategorySection />
       </section>
     </main>

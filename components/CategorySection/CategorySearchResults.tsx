@@ -7,8 +7,10 @@ import { getRecipesByCategory } from "@/utils/fetchData";
 import { useCategoryStore } from "@/store/CategoryStore";
 
 export const CategorySearchResults = () => {
-  const drinks = useCategoryStore((state) => state.categoryDrinksList);
-  const setDrinks = useCategoryStore((state) => state.setCategoryDrinksList);
+  const drinks = useCategoryStore((state) => state.drinksFromSelectedCategory);
+  const setDrinks = useCategoryStore(
+    (state) => state.setDrinksFromSelectedCategory
+  );
 
   const selectedCategory = useCategoryStore((state) => state.selectedCategory);
 
@@ -29,7 +31,7 @@ export const CategorySearchResults = () => {
         {drinks?.map((drink) => (
           <li
             key={drink.idDrink}
-            className="hover:bg-neutral-200 shadow overflow-hidden rounded-md"
+            className="hover:bg-neutral-200 shadow-md overflow-hidden rounded-md"
           >
             <Link href={`/drink/${drink.idDrink}`}>
               <div className="relative h-[170px] lg:h-[170px] w-full">
@@ -40,7 +42,7 @@ export const CategorySearchResults = () => {
                   sizes="200px 200px"
                 />
               </div>
-              <div className="p-2 leading-3">
+              <div className="p-2 leading-3 bg-neutral-50">
                 <span className="text-xs">{drink.strDrink}</span>
               </div>
             </Link>

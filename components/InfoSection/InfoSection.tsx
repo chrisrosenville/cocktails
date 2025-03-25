@@ -28,7 +28,7 @@ const INFO_CARDS = [
 export const InfoSection = () => {
   return (
     <>
-      <div className="flex flex-col md:flex-row gap-8">
+      <div className="flex flex-col md:flex-row p-8 gap-8">
         {INFO_CARDS.map((card) => (
           <div key={card.id} className="p-4">
             <card.icon className="mx-auto w-10 h-10" />
