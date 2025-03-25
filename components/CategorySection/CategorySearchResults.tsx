@@ -1,4 +1,4 @@
-import { FC, useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect } from "react";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -42,8 +42,8 @@ export const CategorySearchResults = () => {
                   sizes="200px 200px"
                 />
               </div>
-              <div className="p-2 leading-3 bg-neutral-50">
-                <span className="text-xs">{drink.strDrink}</span>
+              <div className="p-2 leading-3 bg-neutral-50 h-full">
+                <span className="text-sm">{drink.strDrink}</span>
               </div>
             </Link>
           </li>

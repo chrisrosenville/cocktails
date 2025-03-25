@@ -20,7 +20,7 @@ export const Hero = () => {
         className="absolute inset-0 bg-neutral-950/80 w-full h-full"
       ></div>
 
-      <div className="flex flex-col items-center justify-center h-full w-full">
+      <div className="flex flex-col items-center justify-center sm:max-w-[400px] md:max-w-[500px] max-w-[320px] mx-auto h-full w-full">
         <div style={{ zIndex: 2 }} className="relative">
           <Image
             src={"/images/drink.png"}
@@ -29,7 +29,7 @@ export const Hero = () => {
             height={140}
             loading="eager"
             style={{ zIndex: -1 }}
-            className="absolute md:bottom-1/4 bottom-1/2 left-1/2 -translate-x-1/2"
+            className="absolute md:bottom-2/5 bottom-1/2 left-1/2 -translate-x-1/2"
           />
 
           <h2 className="font-Inter font-black text-2xl mt-4">
@@ -41,10 +41,7 @@ export const Hero = () => {
           </p>
         </div>
 
-        <div
-          style={{ zIndex: 2 }}
-          className="mt-6 relative w-full max-w-[320px]"
-        >
+        <div style={{ zIndex: 2 }} className="mt-6 relative w-full">
           <Searchbar />
         </div>
       </div>

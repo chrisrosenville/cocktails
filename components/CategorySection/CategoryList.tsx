@@ -1,11 +1,10 @@
 "use client";
-import { useQuery } from "@tanstack/react-query";
+import { useCallback, useEffect } from "react";
 
 import { useCategoryStore } from "@/store/CategoryStore";
 import { TCategoryListItem } from "@/types/category";
 
 import { getCategoryList, getRecipesByCategory } from "@/utils/fetchData";
-import { useCallback, useEffect, useState } from "react";
 
 export const CategoryList = () => {
   const categoryStore = useCategoryStore();
