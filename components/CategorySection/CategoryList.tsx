@@ -50,9 +50,10 @@ export const CategoryList = () => {
       {categoryStore.categoryList.map((category: TCategoryListItem) => (
         <li
           className={`${
-            categoryStore.selectedCategory === category.strCategory &&
-            "font-bold bg-neutral-300 border-lime-700"
-          } text-sm font-light cursor-pointer px-3 py-1 border-2 border-neutral-50 bg-neutral-50 rounded-xl flex justify-center items-center text-nowrap`}
+            categoryStore.selectedCategory === category.strCategory
+              ? "bg-lime-700 text-white border-lime-700"
+              : "border-neutral-50 bg-neutral-50 "
+          } text-sm cursor-pointer px-3 py-1 border-2 font-light rounded-xl flex justify-center items-center text-nowrap`}
           key={category.strCategory}
           onClick={() => handleSelectCategory(category.strCategory)}
         >
