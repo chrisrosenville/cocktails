@@ -1,9 +1,9 @@
 import Image from "next/image";
 
-import { CocktailsTitle } from "@/components/Hero/CocktailsTitle";
+import { HeroTitle } from "@/components/HeroSection/HeroTitle";
 import { Searchbar } from "../Searchbar/Searchbar";
 
-export const Hero = () => {
+export const HeroSection = () => {
   return (
     <div className="relative aspect-video min-h-[calc(100svh-64px)] md:min-h-[500px] w-full h-full">
       <Image
@@ -33,7 +33,7 @@ export const Hero = () => {
           />
 
           <h2 className="font-Inter font-black text-2xl mt-4">
-            <CocktailsTitle />
+            <HeroTitle />
           </h2>
 
           <p className="text-xl font-DancingScript tracking-tight mt-2 text-neutral-200 text-center max-w-[350px] sm:max-w-[470px]">

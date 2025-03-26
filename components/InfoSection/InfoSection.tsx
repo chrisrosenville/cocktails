@@ -5,9 +5,9 @@ const INFO_CARDS = [
   {
     id: 1,
     icon: FaSearch,
-    title: "Find your favorite recipes",
+    title: "Find your favorites",
     description:
-      "Search for your favorite drink recipe. Whether you're craving a classic cocktail or something new and fancy, chances are you can't remember all the recipes. Worry not though, we've got you covered!",
+      "Search for your favorite drink recipe. Whether you're craving a classic cocktail or something new and fancy, chances are you can't remember all the recipes. Worry not though, we've got you covered! Simply search for it's name and you're good to go.",
   },
   {
     id: 2,
@@ -30,7 +30,7 @@ export const InfoSection = () => {
     <>
       <div className="flex flex-col md:flex-row p-8 gap-8">
         {INFO_CARDS.map((card) => (
-          <div key={card.id} className="p-4">
+          <div key={card.id} className="p-4 w-full md:w-1/3">
             <card.icon className="mx-auto w-10 h-10" />
             <h4 className="text-2xl text-center font-Oswald uppercase tracking-wider mt-4">
               {card.title}
