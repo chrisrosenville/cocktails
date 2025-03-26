@@ -35,12 +35,13 @@ export const CategorySearchResults = () => {
             className="hover:bg-neutral-200 shadow-md overflow-hidden rounded-md"
           >
             <Link href={`/drink/${drink.idDrink}`}>
-              <div className="relative aspect-[3.5/4] w-full">
+              <div className="relative aspect-[3.6/4] w-full">
                 <Image
                   src={drink.strDrinkThumb}
                   alt={drink.strDrink}
                   fill
-                  sizes="200px 200px"
+                  sizes="270px 300px"
+                  className="object-cover"
                 />
               </div>
               <div className="p-2 leading-3 bg-neutral-50 h-full">
