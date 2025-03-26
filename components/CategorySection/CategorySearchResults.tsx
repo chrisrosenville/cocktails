@@ -1,3 +1,4 @@
+"use client";
 import { useCallback, useEffect } from "react";
 
 import Image from "next/image";
@@ -34,7 +35,7 @@ export const CategorySearchResults = () => {
             className="hover:bg-neutral-200 shadow-md overflow-hidden rounded-md"
           >
             <Link href={`/drink/${drink.idDrink}`}>
-              <div className="relative h-[170px] lg:h-[170px] w-full">
+              <div className="relative aspect-[3.5/4] w-full">
                 <Image
                   src={drink.strDrinkThumb}
                   alt={drink.strDrink}

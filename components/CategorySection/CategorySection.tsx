@@ -1,4 +1,5 @@
-import { CategorySelectAndSearchContainer } from "./CategorySelectAndSearchContainer";
+import { CategoryList } from "./CategoryList";
+import { CategorySearchResults } from "./CategorySearchResults";
 
 export const CategorySection = () => {
   return (
@@ -10,8 +11,11 @@ export const CategorySection = () => {
         Select one of the categories below to see all our recipes within that
         category
       </p>
-      <div className="mt-2 min-h-[500px]">
-        <CategorySelectAndSearchContainer />
+      <div className="mt-2">
+        <CategoryList />
+        <div className="mt-4">
+          <CategorySearchResults />
+        </div>
       </div>
     </>
   );

@@ -17,6 +17,8 @@ export const CategoryList = () => {
     console.log("Getting all categories...");
     categoryStore.setCategoryList(categoryArray);
     categoryStore.setSelectedCategory(categoryArray[0].strCategory);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const getDrinksFromSelectedCategory = useCallback(async () => {
@@ -26,14 +28,20 @@ export const CategoryList = () => {
     await getRecipesByCategory(categoryStore.selectedCategory).then((res) => {
       categoryStore.setDrinksFromSelectedCategory(res);
     });
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     getCategories();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     getDrinksFromSelectedCategory();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [categoryStore.selectedCategory]);
 
   const handleSelectCategory = (categoryName: string | null) => {
