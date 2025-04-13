@@ -35,7 +35,7 @@ export default function DrinkPage() {
   if (!data?.drinks) return null;
 
   return (
-    <main className="min-h-svh flex flex-col sm:max-w-[600px] sm:mx-auto md:pt-16">
+    <main className="min-h-svh flex flex-col sm:max-w-[600px] sm:mx-auto md:pt-16 ">
       <div className="relative aspect-square sm:aspect-square w-full sm:mx-auto sm:w-[600px]">
         <Image
           src={data?.drinks[0]?.strDrinkThumb ?? ""}

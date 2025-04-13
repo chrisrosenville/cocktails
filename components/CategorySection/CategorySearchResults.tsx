@@ -32,9 +32,9 @@ export const CategorySearchResults = () => {
         {drinks?.map((drink) => (
           <li
             key={drink.idDrink}
-            className="hover:bg-neutral-200 shadow-md overflow-hidden rounded-md"
+            className="bg-neutral-50 hover:bg-lime-600 shadow-md overflow-hidden rounded-md"
           >
-            <Link href={`/drink/${drink.idDrink}`}>
+            <Link href={`/drink/${drink.idDrink}`} className="">
               <div className="relative aspect-[3.6/4] w-full">
                 <Image
                   src={drink.strDrinkThumb}
@@ -44,7 +44,7 @@ export const CategorySearchResults = () => {
                   className="object-cover"
                 />
               </div>
-              <div className="p-2 leading-3 bg-neutral-50 h-full">
+              <div className="p-2 leading-3 h-full">
                 <span className="text-sm">{drink.strDrink}</span>
               </div>
             </Link>

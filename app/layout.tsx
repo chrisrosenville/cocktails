@@ -23,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${dancingScript.className} ${inter.className} ${openSans.className}`}
+        className={`${dancingScript.className} ${inter.className} ${openSans.className} bg-neutral-900`}
       >
         <AppProvider>
           <Header />
